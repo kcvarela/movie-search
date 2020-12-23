@@ -1,0 +1,30 @@
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.kcv.moviesearch.presentation.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_showDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.kcv.moviesearch.presentation.SearchDetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_search_detail">
+        <argument
+            android:name="selectedItem"
+            app:argType="com.kcv.moviesearch.domain.Search"
+
+            />
+    </fragment>
+
+</navigation>

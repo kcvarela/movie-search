@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.kcv.moviesearch.presentation.SearchDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/posterDetail"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_margin="@dimen/margin_medium"
+        app:imageUrl="@{viewModel.selectedItemSearched.poster}"
+        tools:src="@tools:sample/backgrounds/scenic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+           android:layout_margin="@dimen/margin_medium"
+            android:ellipsize="end"
+            android:maxLines="3"
+            style="@style/font24Black"
+            android:text="@{viewModel.selectedItemSearched.title}"
+            app:layout_constraintTop_toBottomOf="@id/posterDetail"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:gravity="center"
+            tools:text="Title of movie and series"/>
+
+        <TextView
+            android:id="@+id/yearlblTextView"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/year_search_result"/>
+
+        <TextView
+            android:id="@+id/yearTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.selectedItemSearched.year}"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            app:layout_constraintLeft_toRightOf="@id/yearlblTextView"
+            tools:text="2001"/>
+
+        <TextView
+            android:id="@+id/typelblTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/yearTextView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            android:text="@string/type_search_result"/>
+
+        <TextView
+            android:id="@+id/typeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.selectedItemSearched.type}"
+            app:layout_constraintLeft_toRightOf="@+id/typelblTextView"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            tools:text="Movie"/>
+
+        <TextView
+            android:id="@+id/imblblTextView"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@+id/typelblTextView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/imb_search_result"/>
+
+        <TextView
+            android:id="@+id/imbTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.selectedItemSearched.imdbID}"
+            app:layout_constraintTop_toBottomOf="@id/typeTextView"
+            app:layout_constraintLeft_toRightOf="@id/imblblTextView"
+            tools:text="tt9073722"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

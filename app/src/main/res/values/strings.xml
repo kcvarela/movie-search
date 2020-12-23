@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MovieSearch</string>
+    <string name="search_dialog">Pelicula o serie a buscar</string>
+    <string name="search_btn">Search!</string>
+    <string name="movies_checkBox">movies</string>
+    <string name="series_checkBox">series</string>
+    <string name="chapters_checkBox">chapters</string>
+    <string name="year_search_result">Year:</string>
+    <string name="type_search_result">Type:</string>
+    <string name="imb_search_result">imdbID:</string>
+</resources>
