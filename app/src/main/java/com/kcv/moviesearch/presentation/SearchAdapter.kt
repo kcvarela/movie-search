@@ -8,26 +8,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kcv.moviesearch.databinding.ItemSearchBinding
 import com.kcv.moviesearch.domain.Search
 
-class SearchAdapter(private val onClickListener: OnClickListener): ListAdapter<Search,
-        SearchAdapter.SearchViewHolder>(DiffCallback){
+class SearchAdapter(private val onClickListener: OnClickListener) : ListAdapter<Search,
+        SearchAdapter.SearchViewHolder>(DiffCallback) {
 
-
-
-    class SearchViewHolder(private var binding: ItemSearchBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(searchNew: Search){
+    class SearchViewHolder(private var binding: ItemSearchBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(searchNew: Search) {
             binding.itemList = searchNew
             binding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-       return  SearchViewHolder(ItemSearchBinding.inflate(LayoutInflater.from(parent.context)))
+        return SearchViewHolder(ItemSearchBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        val searchNew =  getItem(position)
+        val searchNew = getItem(position)
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onClickListener.onClick(searchNew)
         }
         holder.bind(searchNew)
@@ -44,11 +43,7 @@ class SearchAdapter(private val onClickListener: OnClickListener): ListAdapter<S
         }
     }
 
-    //OnClick Added lambda
-    class OnClickListener(val clickListener: (itemSearched:Search) -> Unit) {
-        fun onClick(itemSearched:Search) = clickListener(itemSearched)
+    class OnClickListener(val clickListener: (itemSearched: Search) -> Unit) {
+        fun onClick(itemSearched: Search) = clickListener(itemSearched)
     }
-
-
-
 }

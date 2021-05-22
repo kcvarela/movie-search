@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kcv.moviesearch.R
-import com.kcv.moviesearch.domain.Search
 import com.kcv.moviesearch.domain.SearchResponse
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView,
-                     data: SearchResponse?) {
+fun bindRecyclerView(
+    recyclerView: RecyclerView,
+    data: SearchResponse?
+) {
     val adapter = recyclerView.adapter as SearchAdapter
 
 
@@ -30,17 +31,18 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .load(imgUri)
             .apply(
                 RequestOptions()
-                .placeholder(R.drawable.loading_animation)
-                .error(R.drawable.ic_broken_image))
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(imgView)
     }
-
 }
 
-
 @BindingAdapter("omdApiStatus")
-fun bindStatus(statusImageView: ImageView,
-               status: OmdApiStatus?) {
+fun bindStatus(
+    statusImageView: ImageView,
+    status: OmdApiStatus?
+) {
     when (status) {
         OmdApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
@@ -55,5 +57,4 @@ fun bindStatus(statusImageView: ImageView,
         }
 
     }
-
 }

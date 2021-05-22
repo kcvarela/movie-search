@@ -1,11 +1,14 @@
 package com.kcv.moviesearch.presentation
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.kcv.moviesearch.domain.Search
 
-class SearchDetailViewModel(@Suppress("UNUSED_PARAMETER")itemSearched: Search,
-                      app: Application
+class SearchDetailViewModel(
+    @Suppress("UNUSED_PARAMETER") itemSearched: Search,
+    app: Application
 ) :
     AndroidViewModel(app) {
 
@@ -16,7 +19,4 @@ class SearchDetailViewModel(@Suppress("UNUSED_PARAMETER")itemSearched: Search,
     init {
         _selectedItemSearched.value = itemSearched
     }
-
-
-
 }
