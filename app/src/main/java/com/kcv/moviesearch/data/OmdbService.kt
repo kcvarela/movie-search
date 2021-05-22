@@ -1,6 +1,5 @@
 package com.kcv.moviesearch.data
 
-import com.kcv.moviesearch.domain.Search
 import com.kcv.moviesearch.domain.SearchResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -25,27 +24,24 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .build()
 
-
-
-
 interface OmdbApi {
 
     @GET("?type=movie")
-    suspend fun getMoviesByTitle(@Query(value = "s") searchTitle: String):SearchResponse
+    suspend fun getMoviesByTitle(@Query(value = "s") searchTitle: String): SearchResponse
 
     @GET("?type=series")
-    suspend fun getSeriesByTitle(@Query(value = "s") searchTitle: String):SearchResponse
+    suspend fun getSeriesByTitle(@Query(value = "s") searchTitle: String): SearchResponse
 
     @GET("?type=episode")
-    suspend fun getByEpisode(@Query(value = "s") searchTitle: String):SearchResponse
+    suspend fun getByEpisode(@Query(value = "s") searchTitle: String): SearchResponse
 
 }
 
 object Api {
-    val retrofitService : OmdbApi by lazy {
-        retrofit.create(OmdbApi::class.java) }
+    val retrofitService: OmdbApi by lazy {
+        retrofit.create(OmdbApi::class.java)
+    }
 }
-
 
 
 private fun makeHttpClient() = OkHttpClient.Builder()

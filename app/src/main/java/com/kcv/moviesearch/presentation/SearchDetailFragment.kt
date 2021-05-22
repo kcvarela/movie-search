@@ -9,9 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.kcv.moviesearch.databinding.FragmentSearchDetailBinding
 
 
-class SearchDetailFragment : Fragment(){
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+class SearchDetailFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         @Suppress("UNUSED_VARIABLE")
         val application = requireNotNull(activity).application
@@ -21,10 +23,9 @@ class SearchDetailFragment : Fragment(){
         val itemSearched = SearchDetailFragmentArgs.fromBundle(arguments!!).selectedItem
         val viewModelFactory = SearchDetailViewModelFactory(itemSearched, application)
         binding.viewModel = ViewModelProvider(
-            this, viewModelFactory).get(SearchDetailViewModel::class.java)
+            this, viewModelFactory
+        ).get(SearchDetailViewModel::class.java)
 
         return binding.root
     }
-
-
 }

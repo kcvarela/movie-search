@@ -5,9 +5,9 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class Ratings (
+class Ratings(
     @Json(name = "source")
-    val source : String,
+    val source: String,
     @Json(name = "value")
-    val value : String
-): Parcelable
+    val value: String
+) : Parcelable
