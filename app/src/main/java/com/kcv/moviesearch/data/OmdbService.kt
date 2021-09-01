@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit
 private const val BASE_URL = "https://www.omdbapi.com/"
 
 private val moshi = Moshi.Builder()
-    //.add(DefaultOnDataMismatchAdapter.newFactory(MovieResponse::class.java, null)) /* 5 */
     .add(KotlinJsonAdapterFactory())
     .build()
 
@@ -42,7 +41,6 @@ object Api {
         retrofit.create(OmdbApi::class.java)
     }
 }
-
 
 private fun makeHttpClient() = OkHttpClient.Builder()
     .connectTimeout(60, TimeUnit.SECONDS)

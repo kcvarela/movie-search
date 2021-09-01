@@ -54,7 +54,6 @@ class SearchViewModel : ViewModel() {
     private fun getSeriesResults(editSearch: String) {
         viewModelScope.launch()
         {
-
             try {
                 _searchResponse.value = Api.retrofitService.getSeriesByTitle(editSearch)
                 _status.value = OmdApiStatus.DONE
@@ -70,7 +69,6 @@ class SearchViewModel : ViewModel() {
     private fun getChaptersResults(editSearch: String) {
         viewModelScope.launch()
         {
-
             try {
                 _searchResponse.value = Api.retrofitService.getByEpisode(editSearch)
                 _status.value = OmdApiStatus.DONE

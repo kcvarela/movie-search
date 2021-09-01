@@ -23,8 +23,6 @@ class SearchFragment : Fragment() {
         val binding = FragmentSearchBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
-
         binding.recyclerSearchResults.adapter = SearchAdapter(SearchAdapter.OnClickListener {
             viewModel.displaySearchDetails(it)
         })
