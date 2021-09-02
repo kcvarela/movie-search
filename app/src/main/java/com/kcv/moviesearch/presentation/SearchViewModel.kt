@@ -30,7 +30,7 @@ class SearchViewModel : ViewModel() {
 
     val isSeries = ObservableBoolean(false)
 
-    val isEpisode = ObservableBoolean(false)
+    val isMovie = ObservableBoolean(false)
 
     init {
         getSearchResults("")
@@ -66,21 +66,6 @@ class SearchViewModel : ViewModel() {
         }
     }
 
-    private fun getChaptersResults(editSearch: String) {
-        viewModelScope.launch()
-        {
-            try {
-                _searchResponse.value = Api.retrofitService.getByEpisode(editSearch)
-                _status.value = OmdApiStatus.DONE
-
-            } catch (e: Exception) {
-                Log.e("ViewModel", e.toString())
-                _searchResponse.value = null
-                _status.value = OmdApiStatus.ERROR
-            }
-        }
-    }
-
     fun displaySearchDetails(searchDetail: Search) {
         _showSearchDetail.value = searchDetail
     }
@@ -90,12 +75,9 @@ class SearchViewModel : ViewModel() {
     }
 
     fun onSearchClick(editSearchString: String) {
-
         if (isSeries.get()) {
             getSeriesResults(editSearchString)
-        } else if (isEpisode.get()) {
-            getChaptersResults(editSearchString)
-        } else {
+        } else if (isMovie.get()) {
             getSearchResults(editSearchString)
         }
     }

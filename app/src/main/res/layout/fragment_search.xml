@@ -51,7 +51,7 @@
                 android:id="@+id/movies_checkBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="@={viewModel.isMovie()}"
                 android:text="@string/movies_checkBox" />
 
             <CheckBox
@@ -60,16 +60,8 @@
                 android:layout_height="wrap_content"
                 android:checked="@={viewModel.isSeries()}"
                 android:layout_marginLeft="@dimen/margin_medium"
-
                 android:text="@string/series_checkBox" />
 
-            <CheckBox
-                android:id="@+id/chapters_checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="@={viewModel.isEpisode()}"
-                android:layout_marginLeft="@dimen/margin_medium"
-                android:text="@string/chapters_checkBox" />
         </LinearLayout>
 
         <View

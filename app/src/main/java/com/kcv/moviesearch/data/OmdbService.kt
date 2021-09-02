@@ -30,10 +30,6 @@ interface OmdbApi {
 
     @GET("?type=series")
     suspend fun getSeriesByTitle(@Query(value = "s") searchTitle: String): SearchResponse
-
-    @GET("?type=episode")
-    suspend fun getByEpisode(@Query(value = "s") searchTitle: String): SearchResponse
-
 }
 
 object Api {
