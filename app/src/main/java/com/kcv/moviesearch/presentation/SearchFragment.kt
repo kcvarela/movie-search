@@ -12,6 +12,8 @@ import com.kcv.moviesearch.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
 
+    private lateinit var binding: FragmentSearchBinding
+
     private val viewModel: SearchViewModel by lazy {
         ViewModelProvider(this).get(SearchViewModel::class.java)
     }
@@ -20,14 +22,14 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSearchBinding.inflate(inflater)
+        binding = FragmentSearchBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.recyclerSearchResults.adapter = SearchAdapter(SearchAdapter.OnClickListener {
             viewModel.displaySearchDetails(it)
         })
 
-        viewModel.showSearchDetail.observe(this, Observer {
+        viewModel.showSearchDetail.observe(viewLifecycleOwner, Observer {
             if (null != it) {
                 this.findNavController().navigate(
                     SearchFragmentDirections.actionShowDetail(it)
@@ -35,6 +37,8 @@ class SearchFragment : Fragment() {
                 viewModel.displaySearchDetailsComplete()
             }
         })
+
         return binding.root
     }
+
 }
