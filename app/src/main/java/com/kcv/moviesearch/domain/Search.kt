@@ -20,4 +20,4 @@ data class Search(
     val poster: String,
 
 
-): Parcelable
+    ) : Parcelable

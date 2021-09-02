@@ -14,11 +14,11 @@ import kotlinx.coroutines.launch
 
 enum class OmdApiStatus { LOADING, ERROR, DONE }
 
-class SearchViewModel : ViewModel(){
+class SearchViewModel : ViewModel() {
 
     private val _status = MutableLiveData<OmdApiStatus>()
-    val status : LiveData<OmdApiStatus>
-    get() = _status
+    val status: LiveData<OmdApiStatus>
+        get() = _status
 
     private val _searchResponse = MutableLiveData<SearchResponse>()
     val searchResponse: LiveData<SearchResponse>
@@ -28,28 +28,25 @@ class SearchViewModel : ViewModel(){
     val showSearchDetail: LiveData<Search>
         get() = _showSearchDetail
 
-     val isSeries = ObservableBoolean(false)
+    val isSeries = ObservableBoolean(false)
 
-    val isEpisode = ObservableBoolean(false)
+    val isMovie = ObservableBoolean(false)
 
     init {
         getSearchResults("")
     }
 
-    /**
-     * Sets the value of the status LiveData to the Mars API status.
-     */
     private fun getSearchResults(editSearch: String) {
         viewModelScope.launch()
         {
 
-        try{
-            _searchResponse.value = Api.retrofitService.getMoviesByTitle(editSearch)
-            _status.value = OmdApiStatus.DONE
+            try {
+                _searchResponse.value = Api.retrofitService.getMoviesByTitle(editSearch)
+                _status.value = OmdApiStatus.DONE
 
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.e("ViewModel", e.toString())
-            _status.value = OmdApiStatus.ERROR
+                _status.value = OmdApiStatus.ERROR
             }
         }
     }
@@ -57,28 +54,11 @@ class SearchViewModel : ViewModel(){
     private fun getSeriesResults(editSearch: String) {
         viewModelScope.launch()
         {
-
-            try{
+            try {
                 _searchResponse.value = Api.retrofitService.getSeriesByTitle(editSearch)
                 _status.value = OmdApiStatus.DONE
 
-            }catch (e: Exception){
-                Log.e("ViewModel", e.toString())
-                _searchResponse.value = null
-                _status.value = OmdApiStatus.ERROR
-            }
-        }
-    }
-
-    private fun getChaptersResults(editSearch: String) {
-        viewModelScope.launch()
-        {
-
-            try{
-                _searchResponse.value = Api.retrofitService.getByEpisode(editSearch)
-                _status.value = OmdApiStatus.DONE
-
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.e("ViewModel", e.toString())
                 _searchResponse.value = null
                 _status.value = OmdApiStatus.ERROR
@@ -94,23 +74,11 @@ class SearchViewModel : ViewModel(){
         _showSearchDetail.value = null
     }
 
-
     fun onSearchClick(editSearchString: String) {
-
-        if(isSeries.get()){
-          getSeriesResults(editSearchString)
-        } else if(isEpisode.get()) {
-            getChaptersResults(editSearchString)
-        } else {
+        if (isSeries.get()) {
+            getSeriesResults(editSearchString)
+        } else if (isMovie.get()) {
             getSearchResults(editSearchString)
         }
-
-
     }
-
-
-
-
-
-
 }

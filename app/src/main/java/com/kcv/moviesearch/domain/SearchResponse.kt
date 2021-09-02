@@ -11,10 +11,10 @@ data class SearchResponse(
     val search: List<Search>,
 
     @Json(name = "totalResults")
-     val totalResults: String,
+    val totalResults: String,
 
     @Json(name = "Response")
-     val response: String
-): Parcelable
+    val response: String
+) : Parcelable
 
 

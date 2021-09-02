@@ -2,8 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="itemList"
             type="com.kcv.moviesearch.domain.Search" />
@@ -14,15 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_medium"
-        android:layout_marginBottom="@dimen/margin_xlarge"
         android:layout_marginRight="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_xlarge"
         app:cardElevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/searchContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-android:layout_marginRight="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
             tools:visibility="visible">
 
             <androidx.constraintlayout.widget.Guideline
@@ -36,43 +39,43 @@ android:layout_marginRight="@dimen/margin_medium"
                 android:id="@+id/posterImageView"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
                 app:imageUrl="@{itemList.poster}"
-                tools:src="@tools:sample/backgrounds/scenic"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/centerGuideline"/>
+                app:layout_constraintRight_toRightOf="@id/centerGuideline"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/titleTextView"
+                style="@style/font24Black"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:ellipsize="end"
-                android:maxLines="3"
 
+                android:maxLines="3"
                 android:text="@{itemList.title}"
-                style="@style/font24Black"
                 app:layout_constraintLeft_toRightOf="@id/centerGuideline"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                tools:text="Title of movie and series"/>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Title of movie and series" />
 
             <TextView
                 android:id="@+id/yearlblTextView"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_small"
                 android:ellipsize="end"
                 android:maxLines="1"
-                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                android:text="@string/year_search_result"
+                android:textColor="@color/black"
                 app:layout_constraintLeft_toRightOf="@id/centerGuideline"
-                android:text="@string/year_search_result"/>
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
             <TextView
                 android:id="@+id/yearTextView"
@@ -83,9 +86,9 @@ android:layout_marginRight="@dimen/margin_medium"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@{itemList.year}"
-                app:layout_constraintTop_toBottomOf="@id/titleTextView"
                 app:layout_constraintLeft_toRightOf="@id/yearlblTextView"
-                tools:text="2001"/>
+                app:layout_constraintTop_toBottomOf="@id/titleTextView"
+                tools:text="2001" />
 
             <TextView
                 android:id="@+id/typelblTextView"
@@ -95,10 +98,10 @@ android:layout_marginRight="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_small"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:text="@string/type_search_result"
                 android:textColor="@color/black"
                 app:layout_constraintLeft_toRightOf="@+id/yearTextView"
-                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-                android:text="@string/type_search_result"/>
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
             <TextView
                 android:id="@+id/typeTextView"
@@ -111,20 +114,20 @@ android:layout_marginRight="@dimen/margin_medium"
                 android:text="@{itemList.type.toString()}"
                 app:layout_constraintLeft_toRightOf="@+id/typelblTextView"
                 app:layout_constraintTop_toBottomOf="@id/titleTextView"
-                tools:text="Movie"/>
+                tools:text="Movie" />
 
             <TextView
                 android:id="@+id/imblblTextView"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_small"
                 android:ellipsize="end"
                 android:maxLines="1"
-                app:layout_constraintTop_toBottomOf="@+id/typelblTextView"
+                android:text="@string/imb_search_result"
+                android:textColor="@color/black"
                 app:layout_constraintLeft_toRightOf="@id/centerGuideline"
-                android:text="@string/imb_search_result"/>
+                app:layout_constraintTop_toBottomOf="@+id/typelblTextView" />
 
             <TextView
                 android:id="@+id/imbTextView"
@@ -135,14 +138,15 @@ android:layout_marginRight="@dimen/margin_medium"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@{itemList.imdbID.toString()}"
-                app:layout_constraintTop_toBottomOf="@id/typeTextView"
                 app:layout_constraintLeft_toRightOf="@id/imblblTextView"
-                tools:text="tt9073722"/>
+                app:layout_constraintTop_toBottomOf="@id/typeTextView"
+                tools:text="tt9073722" />
+
             <View
                 style="@style/Divider"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/container_checks" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
